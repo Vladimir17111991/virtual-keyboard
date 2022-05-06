@@ -10,6 +10,17 @@ body.append(section);
 window.onload = () => {
     section.append(textArea);
     section.append(keyboard.createKeyboard());
+    // pressButton();
+    document.addEventListener('keydown', (e) => {
+        const button = document.querySelector(`[data-code=${e.code}]`);
+        if (button) {
+            button.classList.toggle('active');
+            pressButton(e, button, e.code);
+            if (e.code === 'CapsLock') {
+                body.classList.remove('active')
+            }
+        }
+    });
 }
 const pressButton = (event, button, code) => {
     event.preventDefault();
