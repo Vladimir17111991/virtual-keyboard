@@ -1,0 +1,47 @@
+html {
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Georgia', 'Arial', sans-serif;
+    font-weight: 400;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+
+button,
+a {
+    outline: none;
+}
+
+
+.container {
+    max-width: 1280px;
+    padding: 10px;
+    width: 100%;
+    margin: 0 auto;
+    
+}
+.active{
+    // background-color: burlywood !important;
+    color: black !important;
+    background-color: burlywood !important;
+    // animation: click .4s;
+    transition: all .4s ease-in-out;
+}
