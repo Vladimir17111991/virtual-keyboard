@@ -19,7 +19,7 @@ window.onload = () => {
             const btn = e.target.closest('.keyboard-key');
             if (btn.dataset.code === 'ShiftLeft' || btn.dataset.code === 'ShiftRight') {
                 keyboard.pressShift = !keyboard.pressShift;
-                button.classList.toggle('active');
+                btn.classList.toggle('active');
             }
             pressButton(e, btn, btn.dataset.code);
         }
