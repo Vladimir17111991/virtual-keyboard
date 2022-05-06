@@ -56,16 +56,28 @@ export default class Keyboard {
             this.caps = 'onSet';
             btn.classList.add('active');
         }
-        caseKeyboard(e)
+        // caseKeyboard(e);
+        this.caseKeyboard(e);
     }
-    caseKeyboard(ev){
+    caseKeyboard(ev) {
         const { lang } = this;
-        document.querySelectorAll('.keyboard-key').forEach((e) => {
-            if (e.dataset[lang]) {
-              if (this.caps === 'onSet' && !(ev.shiftKey || this.pressShift)) {
-                e.innerHTML = e.dataset[lang].toUpperCase();
-              } else e.innerHTML = e.dataset[lang];
-            }
-          });
+        if (ev.shiftKey || this.pressShift) {
+            document.querySelectorAll('.keyboard-key').forEach((e) => {
+                if (e.dataset[`${lang}Shift`]) {
+                    if (this.caps === 'onSet') {
+                        e.innerHTML = e.dataset[`${lang}Shift`].toLowerCase();
+                    } else e.innerHTML = e.dataset[`${lang}Shift`];
+                } else if (e.dataset[lang]) e.innerHTML = e.dataset[lang];
+            });
+        } else {
+            document.querySelectorAll('.keyboard-key').forEach((e) => {
+                if (e.dataset[lang]) {
+                    if (this.caps === 'onSet' && !(ev.shiftKey || this.pressShift)) {
+                        e.innerHTML = e.dataset[lang].toUpperCase();
+                    } else e.innerHTML = e.dataset[lang];
+                }
+            });
+        }
     }
+
 }

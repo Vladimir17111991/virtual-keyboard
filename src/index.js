@@ -31,6 +31,7 @@ window.onload = () => {
             btn.classList.toggle('active');
             pressButton(e, btn, e.code);
             if (e.code === 'CapsLock') {
+                keyboard.caseKeyboard(e);
                 body.classList.remove('active')
             }
         }
@@ -63,7 +64,7 @@ const pressButton = (e, btn, code) => {
             break;
         }
         case 'CapsLock': {
-            keyboard.changeCapsLock(e);
+            keyboard.capsLockPress(e);
             textArea.classList.remove('active')
             break;
         }
