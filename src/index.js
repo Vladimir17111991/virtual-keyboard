@@ -11,19 +11,33 @@ window.onload = () => {
     section.append(textArea);
     section.append(keyboard.createKeyboard());
     // pressButton();
+
+    // for mouse
+    const mouse = document.querySelector('.main__keyboard');
+    mouse.addEventListener('click', (e) => {
+        if (e.target.closest('.keyboard-key')) {
+            const btn = e.target.closest('.keyboard-key');
+            if (btn.dataset.code === 'ShiftLeft' || btn.dataset.code === 'ShiftRight') {
+                keyboard.pressShift = !keyboard.pressShift;
+                button.classList.toggle('active');
+            }
+            pressButton(e, btn, btn.dataset.code);
+        }
+    });
+    //for keyboard
     document.addEventListener('keydown', (e) => {
-        const button = document.querySelector(`[data-code=${e.code}]`);
-        if (button) {
-            button.classList.toggle('active');
-            pressButton(e, button, e.code);
+        const btn = document.querySelector(`[data-code=${e.code}]`);
+        if (btn) {
+            btn.classList.toggle('active');
+            pressButton(e, btn, e.code);
             if (e.code === 'CapsLock') {
                 body.classList.remove('active')
             }
         }
     });
 }
-const pressButton = (event, button, code) => {
-    event.preventDefault();
+const pressButton = (e, btn, code) => {
+    e.preventDefault();
     textArea.focus();
     let text = '';
     let cursor = textArea.selectionStart;
@@ -41,16 +55,16 @@ const pressButton = (event, button, code) => {
             break;
         }
         case 'CapsLock': {
-            keyboard.changeCapsLock(event);
+            keyboard.changeCapsLock(e);
             textArea.classList.remove('active')
             break;
         }
         case 'ShiftLeft': {
-            keyboard.updateKeyboard(event);
+            keyboard.updateKeyboard(e);
             break;
         }
         case 'ShiftRight': {
-            keyboard.updateKeyboard(event);
+            keyboard.updateKeyboard(e);
             break;
         }
         case 'ArrowRight': {
@@ -83,31 +97,31 @@ const pressButton = (event, button, code) => {
         default: text = '-1'; break;
     }
 
-    if ((code === 'AltLeft' && (event.shiftKey || keyboard.pressShift)) || (code === 'AltRight' && (event.shiftKey || keyboard.pressShift)) || (code === 'ShiftLeft' && event.altKey) || (code === 'ShiftRight' && event.altKey)) {
-        keyboard.languageChange(event);
-        keyboard.removeShift(event);
+    if ((code === 'AltLeft' && (e.shiftKey || keyboard.pressShift)) || (code === 'AltRight' && (e.shiftKey || keyboard.pressShift)) || (code === 'ShiftLeft' && e.altKey) || (code === 'ShiftRight' && e.altKey)) {
+        keyboard.languageChange(e);
+        keyboard.removeShift(e);
     }
 
 
-    if (!button.dataset.shiftKey) {
-        text = button.textContent;
-        keyboard.removeShift(event);
-        keyboard.updateKeyboard(event);
+    if (!btn.dataset.shiftKey) {
+        text = btn.textContent;
+        keyboard.removeShift(e);
+        keyboard.updateKeyboard(e);
     }
 
     if (!(code === 'CapsLock' || code === 'ShiftLeft' || code === 'ShiftRight')) {
-        button.classList.add('active');
-        setTimeout(() => { button.classList.remove('active'); }, 300);
+        btn.classList.add('active');
+        setTimeout(() => { btn.classList.remove('active'); }, 300);
     }
     if (text) {
-        let textBeforeCursor = textArea.value.substring(0, cursor);
+        const textBeforeCursor = textArea.value.substring(0, cursor);
         const textAfterCursor = textArea.value.substring(textArea.selectionEnd);
         if (text === '-1') {
             text = '';
             if (cursor === textArea.selectionEnd) {
                 textBeforeCursor = textBeforeCursor.slice(0, -1);
                 cursor -= (cursor > 0) ? 2 : 1;
-            } else cursor -= 1;
+            } else cursor--;
         }
         textArea.value = textBeforeCursor + text + textAfterCursor;
         textArea.setSelectionRange(cursor + 1, cursor + 1);
