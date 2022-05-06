@@ -35,6 +35,14 @@ window.onload = () => {
             }
         }
     });
+    document.addEventListener('keyup', (e) => {
+        const btn = document.querySelector(`[data-code=${e.code}]`);
+        if (btn) {
+            if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+                btn.classList.remove('active');
+            }
+        }
+    });
 }
 const pressButton = (e, btn, code) => {
     e.preventDefault();
@@ -60,11 +68,9 @@ const pressButton = (e, btn, code) => {
             break;
         }
         case 'ShiftLeft': {
-            keyboard.updateKeyboard(e);
             break;
         }
         case 'ShiftRight': {
-            keyboard.updateKeyboard(e);
             break;
         }
         case 'ArrowRight': {
@@ -98,15 +104,11 @@ const pressButton = (e, btn, code) => {
     }
 
     if ((code === 'AltLeft' && (e.shiftKey || keyboard.pressShift)) || (code === 'AltRight' && (e.shiftKey || keyboard.pressShift)) || (code === 'ShiftLeft' && e.altKey) || (code === 'ShiftRight' && e.altKey)) {
-        keyboard.languageChange(e);
-        keyboard.removeShift(e);
     }
 
 
     if (!btn.dataset.shiftKey) {
         text = btn.textContent;
-        keyboard.removeShift(e);
-        keyboard.updateKeyboard(e);
     }
 
     if (!(code === 'CapsLock' || code === 'ShiftLeft' || code === 'ShiftRight')) {

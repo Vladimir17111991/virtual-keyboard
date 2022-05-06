@@ -20,7 +20,7 @@ export default class Keyboard {
                 const key = createDom('div', keyLang, 'keyboard-key');
                 //add current code for digital on dom 
                 key.dataset.code = e.code;
-                 
+
                 //check if the key has properties in Russian and English
                 if (e.key.ru && e.key.en) {
                     key.dataset.en = e.key.en;
@@ -35,7 +35,7 @@ export default class Keyboard {
                 }
                 // add all classes for each element from elements.js
                 if (e.class) key.classList.add(e.class);
-                
+
                 line.append(key);
             });
             container.append(line);
@@ -45,5 +45,16 @@ export default class Keyboard {
     }
     language(event) {
         this.lang = (this.lang === 'en') ? 'ru' : 'en';
-      }
+    }
+    capsLockPress(e) {
+        const btn = e.target;
+        if (this.caps === 'onSet') {
+            this.caps = 'offSet';
+            btn.classList.remove('active');
+            // console.log(btn)
+        } else {
+            this.caps = 'onSet';
+            btn.classList.add('active');
+        }
+    }
 }
