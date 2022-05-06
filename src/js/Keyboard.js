@@ -56,5 +56,16 @@ export default class Keyboard {
             this.caps = 'onSet';
             btn.classList.add('active');
         }
+        caseKeyboard(e)
+    }
+    caseKeyboard(ev){
+        const { lang } = this;
+        document.querySelectorAll('.keyboard-key').forEach((e) => {
+            if (e.dataset[lang]) {
+              if (this.caps === 'onSet' && !(ev.shiftKey || this.pressShift)) {
+                e.innerHTML = e.dataset[lang].toUpperCase();
+              } else e.innerHTML = e.dataset[lang];
+            }
+          });
     }
 }
