@@ -43,4 +43,7 @@ export default class Keyboard {
         keyboard.append(container);
         return keyboard;
     }
+    language(event) {
+        this.lang = (this.lang === 'en') ? 'ru' : 'en';
+      }
 }
