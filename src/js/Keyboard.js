@@ -43,7 +43,7 @@ export default class Keyboard {
         keyboard.append(container);
         return keyboard;
     }
-    language(event) {
+    language() {
         this.lang = (this.lang === 'en') ? 'ru' : 'en';
     }
     capsLockPress(e) {
@@ -79,13 +79,4 @@ export default class Keyboard {
             });
         }
     }
-    removeUpperCase(e){
-        if (this.pressShift) {
-            this.pressShift = !this.pressShift;
-            document.querySelector('.leftshift').classList.remove('active');
-            document.querySelector('.rightshift').classList.remove('active');
-            this.updateKeyboard(e);
-          }
-    }
-
 }

@@ -42,13 +42,12 @@ window.onload = () => {
             if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
                 btn.classList.remove('active');
                 keyboard.caseKeyboard(e);
-                keyboard.removeUpperCase(e);
-                // console.log(e.pressShift + "e--")
-                // if (e.pressShift) {
-                //     e.pressShift = !e.pressShift;
-                //     document.querySelector('.leftshift').classList.remove('active');
-                //     document.querySelector('.rightshift').classList.remove('active');
-                // }
+                //delete uppercase 
+                if (keyboard.pressShift) {
+                    keyboard.pressShift = !keyboard.pressShift;
+                    document.querySelector('.leftshift').classList.remove('active');
+                    document.querySelector('.rightshift').classList.remove('active');
+                }
             }
         }
     });
@@ -60,7 +59,7 @@ const pressButton = (e, btn, code) => {
     let cursor = textArea.selectionStart;
     switch (code) {
         case 'Backspace': {
-            text = '-1';
+            textArea.value = textArea.value.substring(0,cursor - 1);
             break;
         }
         case 'Space': {
@@ -119,6 +118,7 @@ const pressButton = (e, btn, code) => {
     }
 
     if ((code === 'AltLeft' && (e.shiftKey || keyboard.pressShift)) || (code === 'AltRight' && (e.shiftKey || keyboard.pressShift)) || (code === 'ShiftLeft' && e.altKey) || (code === 'ShiftRight' && e.altKey)) {
+    keyboard.language();
     }
 
 
@@ -131,15 +131,14 @@ const pressButton = (e, btn, code) => {
         setTimeout(() => { btn.classList.remove('active'); }, 300);
     }
     if (text) {
-        const beforeCursor = textArea.value.substring(0, cursor);
-        const afterCursor = textArea.value.substring(textArea.selectionEnd);
+        let beforeCursor = textArea.value.substring(0, cursor);
+        let afterCursor = textArea.value.substring(textArea.selectionEnd);
         console.log(text)
         if (text === '    ') textArea.setSelectionRange(cursor + 4, cursor + 4);
         if (text === '-1') {
             text = '';
         } else {
             textArea.value = beforeCursor + text + afterCursor;
-            textArea.setSelectionRange(cursor + 1, cursor + 1);
         }
     }
 };
