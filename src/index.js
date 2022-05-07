@@ -69,9 +69,11 @@ const pressButton = (e, btn, code) => {
             break;
         }
         case 'ShiftLeft': {
+            keyboard.caseKeyboard(e);
             break;
         }
         case 'ShiftRight': {
+            keyboard.caseKeyboard(e);
             break;
         }
         case 'ArrowRight': {
@@ -121,10 +123,6 @@ const pressButton = (e, btn, code) => {
         const textAfterCursor = textArea.value.substring(textArea.selectionEnd);
         if (text === '-1') {
             text = '';
-            if (cursor === textArea.selectionEnd) {
-                textBeforeCursor = textBeforeCursor.slice(0, -1);
-                cursor -= (cursor > 0) ? 2 : 1;
-            } else cursor--;
         }
         textArea.value = textBeforeCursor + text + textAfterCursor;
         textArea.setSelectionRange(cursor + 1, cursor + 1);
