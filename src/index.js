@@ -134,11 +134,13 @@ const pressButton = (e, btn, code) => {
         let beforeCursor = textArea.value.substring(0, cursor);
         let afterCursor = textArea.value.substring(textArea.selectionEnd);
         console.log(text)
-        if (text === '    ') textArea.setSelectionRange(cursor + 4, cursor + 4);
+        
         if (text === '-1') {
             text = '';
         } else {
             textArea.value = beforeCursor + text + afterCursor;
+            textArea.setSelectionRange(cursor + 1, cursor + 1);
         }
+        if (text === '    ') textArea.setSelectionRange(cursor + 4, cursor + 4);
     }
 };
