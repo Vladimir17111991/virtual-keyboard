@@ -10,6 +10,7 @@ export default class Keyboard {
     }
 
     createKeyboard() {
+        this.languageFromLocStorage();
         const keyboard = createDom('div', '', 'main__keyboard');
         const container = createDom('div', '', 'keyboard-container');
 
@@ -45,7 +46,16 @@ export default class Keyboard {
     }
     language() {
         this.lang = (this.lang === 'en') ? 'ru' : 'en';
+        localStorage.setItem('lang',this.lang)
     }
+    languageFromLocStorage() {
+        if (!(localStorage.getItem('lang'))) {
+            // console.log(localStorage)
+            localStorage.setItem('lang', this.lang); 
+        } else {
+          this.lang = localStorage.getItem('lang');
+        }
+      }
     capsLockPress(e) {
         const btn = e.target;
         if (this.caps === 'onSet') {
