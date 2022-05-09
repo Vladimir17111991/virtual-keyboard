@@ -3,12 +3,15 @@ import Keyboard from './js/Keyboard';
 import './styles/style.css';
 // import './styles/style.scss';
 const keyboard = new Keyboard();
+
 const section = createDom('section', '', 'main', 'container');
 const textArea = createDom('textarea', '', 'main__textarea');
+const titleLang = createDom('div','Изменить язык ввода: Alt + Shift','main__language');
 const { body } = document;
 body.append(section);
 window.onload = () => {
     section.append(textArea);
+    section.append(titleLang);
     section.append(keyboard.createKeyboard());
     // pressButton();
 

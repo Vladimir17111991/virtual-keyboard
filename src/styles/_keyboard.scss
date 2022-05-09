@@ -1,9 +1,18 @@
-.main__keyboard{
+.main{
+    &__keyboard{
     background-color: aquamarine;
     margin: 0 auto;
     width: 100%;
     padding: 15px;
     border-radius: 20px;
+    }
+    &__language{
+        color: rgb(112, 132, 245);
+        padding: 10px;
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 2em;
+    }
 }
 .keyboard{
     &-container{

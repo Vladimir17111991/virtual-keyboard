@@ -70,6 +70,14 @@ a {
   border-radius: 20px;
 }
 
+.main__language {
+  color: #7084f5;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 2em;
+}
+
 .keyboard-container {
   position: relative;
   display: -webkit-box;

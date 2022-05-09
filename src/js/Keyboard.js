@@ -13,7 +13,7 @@ export default class Keyboard {
         this.languageFromLocStorage();
         const keyboard = createDom('div', '', 'main__keyboard');
         const container = createDom('div', '', 'keyboard-container');
-
+       
         for (let i = 0; i < elements.length; i++) {
             const line = createDom('div', '', 'keyboard-line');
             elements[i].forEach((e) => {
@@ -41,6 +41,7 @@ export default class Keyboard {
             });
             container.append(line);
         }
+     
         keyboard.append(container);
         return keyboard;
     }
