@@ -1,0 +1,164 @@
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  font-family: 'Georgia', 'Arial', sans-serif;
+  font-weight: 400;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+button,
+a {
+  outline: none;
+}
+
+.container {
+  max-width: 1280px;
+  padding: 10px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.active {
+  color: black !important;
+  background-color: burlywood !important;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.main__textarea {
+  display: block;
+  width: 900px;
+  height: 300px;
+  border: 3px solid black;
+  border-radius: 50px;
+  background-color: white;
+  margin: 0 auto;
+  padding: 30px;
+  margin-bottom: 30px;
+  word-wrap: break-word;
+  font-size: 40px;
+  color: red;
+  resize: none;
+}
+
+.main__keyboard {
+  background-color: aquamarine;
+  margin: 0 auto;
+  width: 100%;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.main__language {
+  color: #7084f5;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 2em;
+}
+
+.keyboard-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.keyboard-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.keyboard-line:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.keyboard-key {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border: 2px solid black;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #312050;
+  color: white;
+  border-radius: 10px;
+  font-size: 23px;
+  cursor: pointer;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  -webkit-box-shadow: 0 0 5px 2px #312050;
+          box-shadow: 0 0 5px 2px #312050;
+}
+
+.keyboard-key:not(:last-child) {
+  margin-right: 15px;
+}
+
+.backspace {
+  width: 180px;
+}
+
+.tab, .capslock {
+  width: 135px;
+}
+
+.enter {
+  width: 105px;
+  position: absolute;
+  right: 76px;
+  top: 75px;
+  height: 135px;
+}
+
+.leftshift,
+.rightshift {
+  width: 157px;
+}
+
+.rightctrl,
+.leftctrl {
+  width: 130px;
+}
+
+.leftalt,
+.rightalt {
+  width: 100px;
+}
+
+.space {
+  width: 484px;
+}
+/*# sourceMappingURL=style.css.map */
